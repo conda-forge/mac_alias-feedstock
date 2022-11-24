@@ -1,5 +1,5 @@
 {% set name = "mac_alias" %}
-{% set version = "2.2.0" %}
+{% set version = "2.2.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/mac_alias-{{ version }}.tar.gz
-  sha256: 0eb84a63f98bf54c2f9fbdc4de956a63e64eb8a4a124143a1c1f5a78326442f0
+  sha256: 655906606461754aa80c7acc5672c74d74a1497c649c8f912cb329ca5c6f4ca6
 
 build:
   noarch: python
