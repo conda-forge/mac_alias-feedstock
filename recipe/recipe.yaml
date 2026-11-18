@@ -1,0 +1,49 @@
+schema_version: 1
+
+context:
+  name: mac_alias
+  version: "2.2.4"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://files.pythonhosted.org/packages/source/${{ name[0] }}/${{ name }}/mac_alias-${{ version }}.tar.gz
+  sha256: a505a1d3f5b7c0919db7b9a49bcc0d0bad2575189034206ac2ec722b9acd3999
+
+build:
+  number: 1
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv
+
+requirements:
+  host:
+    - pip
+    - pytest
+    - python ${{ python_min }}.*
+    - setuptools ==84.2.1
+    - setuptools-scm ==10.3.4
+  run:
+    - python >=${{ python_min }}
+
+tests:
+  - python:
+      imports:
+        - mac_alias
+      pip_check: true
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
+
+about:
+  summary: Generate and parse Mac OS Alias records from Python
+  license: MIT
+  license_file:
+    - LICENSE
+  homepage: http://alastairs-place.net/projects/mac_alias
+  documentation: https://mac-alias.readthedocs.io/en/latest/
+
+extra:
+  recipe-maintainers:
+    - thewchan
